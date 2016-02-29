@@ -1,0 +1,18 @@
+{
+  "name": "mandrill2sparkpost",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "PRIVATE",
+  "dependencies": {
+    "handlebars": "git+ssh://git@github.com/ewandennis/handlebars.js.git#mandrill"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
