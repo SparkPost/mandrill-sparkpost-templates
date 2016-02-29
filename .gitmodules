@@ -1,0 +1,3 @@
+[submodule "handlebars"]
+	path = handlebars
+	url = https://github.com/ewandennis/handlebars.js.git
