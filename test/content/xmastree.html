@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<p>Hi {{firstName}}</p>
+{{#if firstTimer}}
+<p>Welcome to the xmas tree Mandrill test template</p>
+{{/if}}
+<ul>
+  {{#each articles}}
+  <li>{{title}} ({{#each keywords}}{{this}} {{/each}})</li>
+  {{/each}}
+</ul>

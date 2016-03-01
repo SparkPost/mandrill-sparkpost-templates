@@ -1,8 +1,8 @@
 var chai = require('chai')
-  , fs = require('fs')
   , expect = chai.expect
   , handlebars = require('handlebars')
-  , TranslationPass = require('../../translation');
+  , TranslationPass = require('../../lib/translation')
+  , dumpAST = require('../lib/util');
 
 function translate(ctx, sentence) {
   ctx.ast = handlebars.parse(sentence)
@@ -13,19 +13,8 @@ function translate(ctx, sentence) {
 
 describe('Mandrill to SparkPost template translator', function() {
   afterEach('dump AST on failure', function() {
-    var astFilename = this.currentTest.title.replace(/ /g, '-') + '.json'
-      , ast = this.currentTest.ctx.ast;
-    if (this.currentTest.state == 'failed') {
-      fs.writeFileSync(astFilename, JSON.stringify(ast, null,  '  '));
-    } else {
-      try {
-        fs.accessSync(astFilename, fs.F_OK);
-        fs.unlinkSync(astFilename);
-      } catch(e) {
-        // swallow
-      }
-    }
-  });
+    dumpAST(this.currentTest, this);
+  }); 
 
   it('should translate non-template content', function() {
     var sentence = 'This is not <b>template</b> content';
@@ -56,8 +45,7 @@ describe('Mandrill to SparkPost template translator', function() {
       .to.equal('{{each listOfStuff}}element: {{loop_var}}{{end}}');
   });
 
-  it('should translate non-each blocks', function() {
-  });
+  it('should translate non-each blocks');
 
   it('should translate nested each blocks', function() {
     expect(translate(this, '{{#each listOfStuff}}{{#each sublist}}{{title}}{{/each}}{{/each}}'))

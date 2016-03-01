@@ -9,7 +9,9 @@
   "author": "",
   "license": "PRIVATE",
   "dependencies": {
-    "handlebars": "file:handlebars"
+    "handlebars": "file:handlebars",
+    "mandrill-api": "^1.0.45",
+    "sparkpost": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
