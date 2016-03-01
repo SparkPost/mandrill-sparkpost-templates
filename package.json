@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "browserify static/main.js > static/packed.js",
     "dev": "node index.js",
     "test": "mocha test/spec"
   },
   "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
   "license": "Apache 2.0",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.4",
     "handlebars": "file:handlebars",
     "mandrill-api": "^1.0.45",
+    "q": "^1.4.1",
     "sparkpost": "^1.1.0"
   },
   "devDependencies": {

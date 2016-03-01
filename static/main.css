@@ -1,0 +1,42 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.jumbotron h1 {
+  text-align: center;
+}
+
+.navbar {
+  min-height: 80px;
+  margin-bottom: 10px;
+  background-color: #fa6423;
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.navbar .navbar-nav > li > a {
+  color: #fff;
+}
+
+.good {
+  color: #5cb85c;
+}
+
+.bad {
+  color: #d9534f;
+}
+
+p.betaFlag {
+  text-align: center;
+  font-weight: 500;
+  color: #888;
+}
+

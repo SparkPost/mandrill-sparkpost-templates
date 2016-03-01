@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SparkPost Template Translation</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" -->
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Mandrill Template Translation</h1>
+        <p>This is a SparkPost to Mandrill template translation service.  From here you can translate a template from file or migrate one directly from your Mandrill account into SparkPost.</p>
+        <p class="betaFlag">[BETA - BETA - BETA - BETA]</p>
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="good">Supported Features</h2>
+            <ul>
+              <li><strong>Handlebars syntax</strong></li>
+              <li><strong>Logic and iteration:</strong> if, each, ...</li>
+            </ul>
+          </div> 
+          <div class="col-md-6">
+            <h2 class="bad">Unsupported Features</h2>
+            <ul>
+              <li><strong>Mailchimp syntax</strong></li>
+              <li><strong>Inline helpers:</strong> upper, lower, title, url, date, striptags</li>
+              <li><strong>Block helpers:</strong> unless, with</li>
+            </ul>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Paste in a Mandrill template, get a SparkPost version back.  Good for converting templates used inline with Mandrill's <code>messages/send_template</code></p>
+          <p><a class="btn btn-success btn-lg" href="#" role="button">Translate A Template &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <p>Name a Mandrill template and we'll pick it out, translate it and deposit it in your SparkPost account.</p>
+          <p><a class="btn btn-success btn-lg" href="#" role="button">Migrate A Template &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
+
+    </div>
+
+    <script src="packed.js"></script>
+  </body>
+</html>

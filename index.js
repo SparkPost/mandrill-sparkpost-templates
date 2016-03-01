@@ -7,6 +7,13 @@ var express = require('express')
   , translateRouter = require('./routes/translate')
   , migrateRouter = require('./routes/migrate');
 
+// ----------------------------------------------------------------------------
+
+app.use(express.static(__dirname + '/static'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+
+// ----------------------------------------------------------------------------
+
 app.use(bodyParser.json({
   limit: '500kb'
 }));
