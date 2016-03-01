@@ -18,6 +18,65 @@ npm install
 grunt
 cd ..
 npm install
+npm run dev
+```
+
+You now have a server running on port 3000.
+
+## The API
+
+### /api/translate: Template Translation
+
+Accept a Mandrill template and convert it SparkPost format.
+
+Request:
+
+```
+POST /api/translate HTTP/1.1
+Content-Type: application/json
+
+{
+  "mandrillTemplate": "..."
+}
+```
+
+Successful response:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "sparkPostTemplate": "..."
+}
+```
+
+### /api/migrate: Migration From Mandrill To SparkPost
+
+Extract a template from Mandrill, translate it and import it into SparkPost.
+
+Request:
+
+```
+POST /api/migrate HTTP/1.1
+Content-Type: application/json
+
+{
+  "mandrillAPIKey": "...",
+  "mandrillTemplateName": "...",
+  "sparkPostAPIKey": "..."
+}
+```
+
+Successful response:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "result": true
+}
 ```
 
 ## Running Tests

@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node index.js",
     "test": "mocha test/spec"
   },
-  "author": "",
-  "license": "PRIVATE",
+  "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
+  "license": "Apache 2.0",
   "dependencies": {
     "handlebars": "file:handlebars",
     "mandrill-api": "^1.0.45",
