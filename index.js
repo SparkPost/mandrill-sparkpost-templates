@@ -15,16 +15,19 @@ app.use(function(req, res, next) {
   function errorResponse(code, msg, err) {
     var errMsg = '';
     if (err) {
-      errmsg = ': ' + (err.message || err);
+      errMsg = ': ' + (err.message || err);
     }
     res.status(code).send({errors:[msg + errMsg]});
   };
 
+  function errorListResponse(code, errlist) {
+    res.status(code).send({errors: errlist});
+  }
+
   res.clientError = function(msg, err) { errorResponse(400, msg, err); };
   res.serverError = function(msg, err) { errorResponse(500, msg, err); };
-  res.clientErrorList = function(errmsglist) {
-    res.status(400).send({errors: errmsglist}); 
-  };
+  res.clientErrorList = function(errList) { errorListResponse(400, errList); };
+  res.serverErrorList = function(errList) { errorListResponse(500, errList); };
 
   next();
 });
