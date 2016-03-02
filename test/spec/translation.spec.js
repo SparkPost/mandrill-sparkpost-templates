@@ -16,6 +16,7 @@ describe('Mandrill template source prep', function() {
     expect(translation.sourcePrep('{{#if x}}x{{elseif y}}y{{/if}}'))
       .to.equal('{{#if x}}x{{else if y}}y{{/if}}');
   });
+
   it('should translate multiple instances of elseif', function() {
     expect(translation.sourcePrep('{{#if x}}x{{elseif y}}y{{elseif z}}z{{/if}}'))
       .to.equal('{{#if x}}x{{else if y}}y{{else if z}}z{{/if}}');
@@ -56,6 +57,11 @@ describe('Mandrill to SparkPost template translator', function() {
       .to.equal('{{if lvl1}}{{if lvl2}}innards{{end}}{{end}}');
   });
 
+  it('should translate ifs with backtick conditionals', function() {
+    expect(translate(this, '{{#if `x > 10`}}x is bigger than ten{{/if}}'))
+      .to.equal('{{if x > 10}}x is bigger than ten{{end}}');
+  });
+
   it('should translate if-elseif blocks', function() {
     expect(translate(this, '{{#if x}}x{{elseif y}}y{{/if}}'))
       .to.equal('{{if x}}x{{else}}{{if y}}y{{end}}{{end}}');
@@ -76,11 +82,18 @@ describe('Mandrill to SparkPost template translator', function() {
       .to.equal('{{each listOfStuff}}element: {{loop_var}}{{end}}');
   });
 
-  it('should translate non-each blocks');
+  it('should translate non-each blocks', function() {
+    expect(translate(this, '{{#arr}}{{this}}{{/arr}}')).to.equal('{{each arr}}{{loop_var}}{{end}}');
+  });
 
   it('should translate nested each blocks', function() {
     expect(translate(this, '{{#each listOfStuff}}{{#each sublist}}{{title}}{{/each}}{{/each}}'))
       .to.equal('{{each listOfStuff}}{{each loop_vars.listOfStuff.sublist}}{{loop_vars.sublist.title}}{{end}}{{end}}');
+  });
+
+  it('should translate handlebars 0-indexed arrays to SparkPost 1-indexed arrays', function() {
+    expect(translate(this, '{{arr.[0].subArr.[10]}}'))
+      .to.equal('{{arr[1].subArr[11]}}');
   });
 });
 
