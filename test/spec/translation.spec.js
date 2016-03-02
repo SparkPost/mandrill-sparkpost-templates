@@ -1,15 +1,31 @@
 var chai = require('chai')
   , expect = chai.expect
   , handlebars = require('handlebars')
-  , TranslationPass = require('../../lib/translation')
+  , translation = require('../../lib/translation')
   , dumpAST = require('../lib/util');
 
 function translate(ctx, sentence) {
-  ctx.ast = handlebars.parse(sentence)
+  ctx.ast = handlebars.parse(translation.sourcePrep(sentence))
     , result = [];
-    new TranslationPass(function(s) { result.push(s); }).accept(ctx.ast);
+    new translation.TranslationPass(function(s) { result.push(s); }).accept(ctx.ast);
   return result.join(''); 
 }
+
+describe('Mandrill template source prep', function() {
+  it('should translate {{elseif ...}} to {{else if ...}}', function() {
+    expect(translation.sourcePrep('{{#if x}}x{{elseif y}}y{{/if}}'))
+      .to.equal('{{#if x}}x{{else if y}}y{{/if}}');
+  });
+  it('should translate multiple instances of elseif', function() {
+    expect(translation.sourcePrep('{{#if x}}x{{elseif y}}y{{elseif z}}z{{/if}}'))
+      .to.equal('{{#if x}}x{{else if y}}y{{else if z}}z{{/if}}');
+  });
+
+  it('should translate over multiple lines', function() {
+    expect(translation.sourcePrep('{{#if x}}\n\tx\n{{elseif y}}\n\ty\n{{elseif z}}\n\tz\n{{/if}}\n'))
+      .to.equal('{{#if x}}\n\tx\n{{else if y}}\n\ty\n{{else if z}}\n\tz\n{{/if}}\n');
+  });
+});
 
 describe('Mandrill to SparkPost template translator', function() {
   afterEach('dump AST on failure', function() {
@@ -38,6 +54,21 @@ describe('Mandrill to SparkPost template translator', function() {
   it('should translate nested if blocks', function() {
     expect(translate(this, '{{#if lvl1}}{{#if lvl2}}innards{{/if}}{{/if}}'))
       .to.equal('{{if lvl1}}{{if lvl2}}innards{{end}}{{end}}');
+  });
+
+  it('should translate if-elseif blocks', function() {
+    expect(translate(this, '{{#if x}}x{{elseif y}}y{{/if}}'))
+      .to.equal('{{if x}}x{{else}}{{if y}}y{{end}}{{end}}');
+  });
+
+  it('should translate nested if-elseif main blocks', function() {
+    expect(translate(this, '{{#if x}}x{{#if xx}}xx{{elseif yy}}yy{{/if}}{{elseif y}}y{{/if}}'))
+      .to.equal('{{if x}}x{{if xx}}xx{{else}}{{if yy}}yy{{end}}{{end}}{{else}}{{if y}}y{{end}}{{end}}');
+  });
+
+  it('should translate nested if-elseif inverse blocks', function() {
+    expect(translate(this, '{{#if x}}x{{elseif y}}y{{#if xx}}xx{{elseif yy}}yy{{/if}}{{/if}}'))
+      .to.equal('{{if x}}x{{else}}{{if y}}y{{if xx}}xx{{else}}{{if yy}}yy{{end}}{{end}}{{end}}{{end}}');
   });
 
   it('should translate each blocks', function() {
