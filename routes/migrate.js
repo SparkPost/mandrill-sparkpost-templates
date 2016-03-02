@@ -26,6 +26,7 @@ router.post('/', function(req, res) {
   .then(function(mandrillTpl) {
 
     var sparkPostTpl = ctrl.translateTemplate(mandrillTpl);
+    sparkPostTpl.id += require('uuid').v4();
     return storeSparkPostTemplate(req.body.sparkPostAPIKey, sparkPostTpl);
 
   }).then(function(storeResult) {

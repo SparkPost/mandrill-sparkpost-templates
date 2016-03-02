@@ -4,6 +4,7 @@
  - npm 2.11.3+
  - mocha
  - grunt
+ - browserify
 
 ## Setup
 
@@ -18,6 +19,7 @@ npm install
 grunt
 cd ..
 npm install
+npm run build
 npm run dev
 ```
 

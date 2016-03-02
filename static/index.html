@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SparkPost Template Translation</title>
+    <title>SparkPost: Mandrill Template Translation</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" -->
@@ -37,7 +37,7 @@
       <div class="container">
         <h1>Mandrill Template Translation</h1>
         <p>This is a SparkPost to Mandrill template translation service.  From here you can translate a template from file or migrate one directly from your Mandrill account into SparkPost.</p>
-        <p class="betaFlag">[BETA - BETA - BETA - BETA]</p>
+        <p class="betaFlag">BETA: This is pre-release software.  Join us on <a href="http://slack.sparkpost.com/">Slack</a> if you have questions or run into issues.</p>
         <div class="row">
           <div class="col-md-6">
             <h2 class="good">Supported Features</h2>
@@ -50,29 +50,20 @@
             <h2 class="bad">Unsupported Features</h2>
             <ul>
               <li><strong>Mailchimp syntax</strong></li>
+              <li><strong>HTML escaping:</strong> put your markup in your template ;)</li>
               <li><strong>Inline helpers:</strong> upper, lower, title, url, date, striptags</li>
               <li><strong>Block helpers:</strong> unless, with</li>
             </ul>
           </div> 
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p>Paste in a Mandrill template, get a SparkPost version back.  Good for converting templates used inline with Mandrill's <code>messages/send_template</code></p>
-          <p><a class="btn btn-success btn-lg" href="#" role="button">Translate A Template &raquo;</a></p>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <a class="btn btn-success btn-lg" href="migrate.html" role="button">Migrate A Template &raquo;</a>
+          </div>
         </div>
-        <div class="col-md-6">
-          <p>Name a Mandrill template and we'll pick it out, translate it and deposit it in your SparkPost account.</p>
-          <p><a class="btn btn-success btn-lg" href="#" role="button">Migrate A Template &raquo;</a></p>
-       </div>
       </div>
-
-      <hr>
-
     </div>
+
 
     <script src="packed.js"></script>
   </body>

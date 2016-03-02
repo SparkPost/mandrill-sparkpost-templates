@@ -1,0 +1,26 @@
+{
+  "name": "mandrill2sparkpost",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Ewan Dennis <ewandennis@users.noreply.github.com>"
+  ],
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/ewandennis/mandrill2sparkpost",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^1.2.1",
+    "jquery": "^2.2.1"
+  }
+}
