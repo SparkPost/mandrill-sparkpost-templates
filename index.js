@@ -15,26 +15,31 @@ app.use('/vendor', express.static(__dirname + '/vendor'));
 // ----------------------------------------------------------------------------
 
 app.use(bodyParser.json({
-  limit: '500kb'
+  limit: '2mb'
 }));
 
 app.use(function(req, res, next) {
-  function errorResponse(code, msg, err) {
-    var errMsg = '';
-    if (err) {
-      errMsg = ': ' + (err.message || err);
-    }
-    res.status(code).send({errors:[msg + errMsg]});
-  };
-
-  function errorListResponse(code, errlist) {
-    res.status(code).send({errors: errlist});
+  function conditionError(err) {
+    var keylist = ['name', 'message', 'description', 'code', 'row', 'col']
+      , ret = {};
+    Object.keys(err).forEach(function(k) {
+      if (keylist.indexOf(k) >= 0) {
+        ret[k] = err[k];
+      }
+    });
+    return ret;
   }
 
-  res.clientError = function(msg, err) { errorResponse(400, msg, err); };
-  res.serverError = function(msg, err) { errorResponse(500, msg, err); };
-  res.clientErrorList = function(errList) { errorListResponse(400, errList); };
-  res.serverErrorList = function(errList) { errorListResponse(500, errList); };
+  function errorResponse(code, errlist) {
+    res.status(code).send({
+      errors: errlist.map(conditionError)
+    });
+  }
+
+  res.clientError = function(err) { errorResponse(400, [err]); };
+  res.serverError = function(err) { errorResponse(500, [err]); };
+  res.clientErrorList = function(errList) { errorResponse(400, errList); };
+  res.serverErrorList = function(errList) { errorResponse(500, errList); };
 
   next();
 });

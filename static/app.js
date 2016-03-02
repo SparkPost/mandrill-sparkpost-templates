@@ -30,12 +30,7 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
         }).catch(function(err) {
           if (err.data.errors) {
             err.data.errors.forEach(function(error) {
-              if (typeof error == 'string') {
-                showError(error);
-              } else {
-                // Expecting an error object
-                showError(error.message);
-              }
+              showError(error.message);
             });
           } else {
             console.error(err);

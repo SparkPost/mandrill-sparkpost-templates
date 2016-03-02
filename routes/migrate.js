@@ -35,7 +35,8 @@ router.post('/', function(req, res) {
 
   }).catch(function(err) {
     if (!ctrl.errorResponse(err, res)) {
-      res.serverError('Unexpected error: ' + err);
+      err.message = 'Unexpected error: ' + err.message;
+      res.serverError(err);
       throw err;
     }
   }).done();
