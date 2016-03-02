@@ -3,7 +3,7 @@
 var ctrl = require('../lib')
   , extractMandrillTemplate = require('../lib/mandrill')
   , storeSparkPostTemplate = require('../lib/sparkpost')
-  , router = require('express').Router();
+  , router = require('express').Router()
   , appendUUID = false;
 
 // Request: {mandrillTemplateName: '...', mandrillAPIKey: '...'}
