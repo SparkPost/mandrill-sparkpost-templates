@@ -4,6 +4,7 @@ var ctrl = require('../lib')
   , extractMandrillTemplate = require('../lib/mandrill')
   , storeSparkPostTemplate = require('../lib/sparkpost')
   , router = require('express').Router();
+  , appendUUID = false;
 
 // Request: {mandrillTemplateName: '...', mandrillAPIKey: '...'}
 // Error: {errors: ['...', ...]
@@ -26,7 +27,9 @@ router.post('/', function(req, res) {
   .then(function(mandrillTpl) {
 
     var sparkPostTpl = ctrl.translateTemplate(mandrillTpl);
-    sparkPostTpl.id += require('uuid').v4();
+    if (appendUUID) {
+      sparkPostTpl.id += require('uuid').v4();
+    }
     return storeSparkPostTemplate(req.body.sparkPostAPIKey, sparkPostTpl);
 
   }).then(function(storeResult) {
