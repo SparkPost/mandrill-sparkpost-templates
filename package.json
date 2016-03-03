@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "cd handlebars && npm install && node_modules/.bin/grunt && cd ..",
+    "preinstall": "NODE_ENV=development cd handlebars && npm install && node_modules/.bin/grunt && cd ..",
     "postinstall": "node_modules/.bin/bower install",
     "test": "mocha test/spec",
     "start": "node index.js"
