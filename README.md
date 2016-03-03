@@ -6,21 +6,12 @@
  - grunt
  - browserify
 
-## Setup
+## Setup: Local
 
 ```bash
 git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
-cd handlebars
-git checkout mandrill
-# submodule calls needed?  The checkout is recursive.
-git submodule init
-git submodule update --recursive
 npm install
-grunt
-cd ..
-npm install
-npm run build
-npm run dev
+npm run start
 ```
 
 You now have a server running on port 3000.

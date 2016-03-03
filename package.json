@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
-    "test": "mocha test/spec"
+    "preinstall": "pushd handlebars && npm install && node_modules/.bin/grunt && popd",
+    "postinstall": "node_modules/.bin/bower install",
+    "test": "mocha test/spec",
+    "start": "node index.js"
   },
   "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "dependencies": {
     "body-parser": "^1.15.0",
     "bower": "^1.7.7",
@@ -21,5 +23,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": "~0.12",
+    "npm": "~2"
   }
 }
