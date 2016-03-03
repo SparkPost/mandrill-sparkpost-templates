@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
 app.use('/api/translate', translateRouter);
 app.use('/api/migrate', migrateRouter);
 
-srv.listen(process.env.POST || 3000, function() {
+srv.listen(process.env.PORT || 3000, function() {
   console.log('Listening on ' + srv.address().port);
 });
 
