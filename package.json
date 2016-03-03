@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "cd handlebars && npm install && npm install --dev && node_modules/.bin/grunt && cd ..",
+    "buildhb": "cd handlebars && npm install && npm install --dev && node_modules/.bin/grunt && cd ..",
+    "disthb": "rm -rf vendor/handlebars && mkdir -p vendor/handlebars && cd vendor/handlebars && cp -R ../../handlebars/dist . && cp -R ../../handlebars/lib . && cp -R ../../handlebars/bin . && cp ../../handlebars/package.json .",
+    "preinstall": "npm run disthb",
     "postinstall": "node_modules/.bin/bower install",
     "test": "mocha test/spec",
     "start": "node index.js"
@@ -15,7 +17,7 @@
     "body-parser": "^1.15.0",
     "bower": "^1.7.7",
     "express": "^4.13.4",
-    "handlebars": "file:handlebars",
+    "handlebars": "file:vendor/handlebars",
     "mandrill-api": "^1.0.45",
     "q": "^1.4.1",
     "sparkpost": "^1.1.0"
