@@ -10,7 +10,7 @@ var express = require('express')
 // ----------------------------------------------------------------------------
 
 app.use(express.static(__dirname + '/static'));
-app.use('/vendor/client', express.static(__dirname + '/vendor'));
+app.use('/vendor', express.static(__dirname + '/vendor/client'));
 
 // ----------------------------------------------------------------------------
 
