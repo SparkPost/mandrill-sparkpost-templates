@@ -1,6 +1,6 @@
 test.js
 node_modules
-vendor
+vendor/client
 npm-debug.log
 notes.txt
 exploration
