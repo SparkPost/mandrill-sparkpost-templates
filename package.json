@@ -6,7 +6,6 @@
   "scripts": {
     "buildhb": "cd handlebars && npm install && npm install --dev && node_modules/.bin/grunt && cd ..",
     "disthb": "rm -rf vendor/handlebars && mkdir -p vendor/handlebars && cd vendor/handlebars && cp -R ../../handlebars/dist . && cp -R ../../handlebars/lib . && cp -R ../../handlebars/bin . && cp ../../handlebars/package.json .",
-    "preinstall": "npm run disthb",
     "postinstall": "node_modules/.bin/bower install",
     "test": "mocha test/spec",
     "start": "node index.js"
