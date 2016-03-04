@@ -9,20 +9,14 @@
 
     <title>SparkPost: Mandrill Template Translation</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" -->
-
-    <!-- Custom styles for this template -->
     <link href="main.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="icon" href="favicon-16.png" sizes="16x16" />
+    <link rel="icon" href="favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-48.png" sizes="48x48" />
+    <link rel="shortcut icon" href="favicon.ico" />
 
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
@@ -73,9 +67,21 @@
               </div>
               <div class="form-group">
                 <label for="spAPIKey">SparkPost API key <span class="text-warning" ng-show="migrateFrm.spAPIKey.$touched && migrateFrm.spAPIKey.$invalid">8+ chars required</span></label>
-                <input ng-disabled="loading" type="text" ng-model="spAPIKey" ng-minlength="8" required class="form-control" name="spAPIKey" />
+                <input ng-disabled="loading || useHerokuSPAPIKey" type="text" ng-model="spAPIKey" ng-minlength="8" ng-required="!useHerokuSPAPIKey" class="form-control" name="spAPIKey" />
               </div>
-              <button ng-disabled="loading" ng-disabled="migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
+              <div class="form-group">
+                <div class="checkbox">
+                  <label for="useHerokuSPAPIKey">
+                    <input type="checkbox" ng-model="useHerokuSPAPIKey" name="useHerokuSPAPIKey" id="useHerokuSPAPIKey"> Use your Heroku SparkPost addon key
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label for="useSandboxDomain">
+                    <input type="checkbox" ng-model="useSandboxDomain" name="useSandboxDomain" id="useSandboxDomain"> Use sandbox domain <code>{{sandboxDomain}}</code> as the from address
+                  </label>
+                </div>
+              </div>
+              <button ng-disabled="loading || migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
             </form>
           </div> 
           <div class="col-md-6">

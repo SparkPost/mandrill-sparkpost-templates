@@ -1,12 +1,11 @@
-## Prerequisites
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ewandennis/mandrill2sparkpost/tree/heroku)
+
+## Setup: Local
+
+### Prerequisites
 
  - node 0.12+
  - npm 2.11.3+
- - mocha
- - grunt
- - browserify
-
-## Setup: Local
 
 ```bash
 git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
@@ -15,6 +14,17 @@ npm run start
 ```
 
 You now have a server running on port 3000.
+
+## Updating Handlebars
+
+If you make a change to the Handlebars subrepo, you must rebuild it:
+
+```bash
+npm run buildhb
+npm run disthb
+```
+
+Remember to commit the updated Handlebars build in vendor/handlebars.
 
 ## The API
 
@@ -77,3 +87,4 @@ Content-Type: application/json
 ```bash
 npm run test
 ```
+
