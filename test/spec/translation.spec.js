@@ -45,7 +45,14 @@ describe('Mandrill to SparkPost template translator', function() {
 
   it('should pass through variable statements', function() {
     expect(translate(this, '{{var}}')).to.equal('{{var}}'); 
-  })
+  });
+
+  it('should translate supported inline helpers', function() {
+    ['upper', 'lower', 'title'].forEach(function(helper) {
+      expect(translate(this, '{{' + helper + ' arg}}'))
+        .to.equal('{{arg}}');
+    });
+  });
 
   it('should translate if blocks', function() {
     expect(translate(this, '{{#if flag}}inside content{{/if}}'))
