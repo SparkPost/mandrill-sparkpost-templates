@@ -10,7 +10,8 @@ var ctrl = require('../lib')
 // Error: {errors: ['...', ...]
 // Response: {result: true}
 router.post('/', function(req, res) {
-  var spAPIKey;
+  var spAPIKey
+    , useSandboxDomain = false;
 
   // Validation
   if (!req.body.hasOwnProperty('mandrillTemplateName')) {
@@ -21,7 +22,7 @@ router.post('/', function(req, res) {
     return res.clientError('Expected mandrillAPIKey field');
   }
 
-  if (req.body.hasOwnProperty('useHerokuSPAPIKey')) {
+  if (req.body.hasOwnProperty('useHerokuSPAPIKey') && req.body.useHerokuSPAPIKey) {
     if (process.env.SPARKPOST_API_KEY) {
       spAPIKey = process.env.SPARKPOST_API_KEY;
     } else {
@@ -33,10 +34,14 @@ router.post('/', function(req, res) {
     spAPIKey = req.body.sparkPostAPIKey;
   }
 
+  if (req.body.hasOwnProperty('useSandboxDomain')) {
+    useSandboxDomain = req.body.useSandboxDomain;
+  }
+
   extractMandrillTemplate(req.body.mandrillAPIKey, req.body.mandrillTemplateName)
   .then(function(mandrillTpl) {
 
-    var sparkPostTpl = ctrl.translateTemplate(mandrillTpl);
+    var sparkPostTpl = ctrl.translateTemplate(mandrillTpl, {useSandboxDomain: useSandboxDomain});
     if (appendUUID) {
       sparkPostTpl.id += require('uuid').v4();
     }

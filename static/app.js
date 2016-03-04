@@ -11,6 +11,17 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
     $scope.mdrlTpl = '';
     $scope.spAPIKey = '';
     $scope.useHerokuSPAPIKey = false;
+    $scope.useSandboxDomain = true;
+    $scope.sandboxDomain = '';
+
+    $http.get('/api/sandboxDomain').then(function(result) {
+      $scope.sandboxDomain = result.data.sandboxDomain;
+    }).catch(function(err) {
+      $scope.sandboxDomain = 'sparkpostbox.com';
+      console.log('While GETting from /api/sandboxDomain: ');
+      console.error(err);
+    });
+
     $scope.migrate = function(formIsValid) {
       if (!formIsValid) {
         return;
@@ -23,7 +34,8 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
           mandrillAPIKey: $scope.mdrlAPIKey,
           mandrillTemplateName: $scope.mdrlTpl,
           useHerokuSPAPIKey: $scope.useHerokuSPAPIKey,
-          sparkPostAPIKey: $scope.spAPIKey
+          sparkPostAPIKey: $scope.spAPIKey,
+          useSandboxDomain: $scope.useSandboxDomain
         }
       }).then(function(result) {
         if (result.errors) {

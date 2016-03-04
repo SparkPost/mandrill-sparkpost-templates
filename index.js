@@ -5,7 +5,8 @@ var express = require('express')
   , app = express()
   , srv = require('http').Server(app)
   , translateRouter = require('./routes/translate')
-  , migrateRouter = require('./routes/migrate');
+  , migrateRouter = require('./routes/migrate')
+  , sandboxDomainRouter = require('./routes/sandboxDomain');
 
 // ----------------------------------------------------------------------------
 
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 
 app.use('/api/translate', translateRouter);
 app.use('/api/migrate', migrateRouter);
+app.use('/api/sandboxDomain', sandboxDomainRouter);
 
 srv.listen(process.env.PORT || 3000, function() {
   console.log('Listening on ' + srv.address().port);
