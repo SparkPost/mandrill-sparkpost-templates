@@ -1,8 +1,7 @@
 'use strict';
 
-var mdrlMigrationApp = angular.module('mdrlMigrationApp', ['migrationControllers', 'ui.bootstrap']);
-
-var migrationControllers = angular.module('migrationControllers', []);
+var mdrlMigrationApp = angular.module('mdrlMigrationApp', ['migrationControllers', 'ui.bootstrap', 'ngSanitize'])
+  , migrationControllers = angular.module('migrationControllers', []);
 
 migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log', 
   function($scope, $http, $log) {
@@ -50,16 +49,19 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
     };
 
     function showInfo(msg) {
-      $scope.alerts.unshift({type: 'success', msg: msg});
+      $scope.alerts.unshift({type: 'success', msg: markupMsg(msg)});
     }
 
     function showWarning(msg) {
-      $scope.alerts.unshift({type: 'warning', msg: msg});
+      $scope.alerts.unshift({type: 'warning', msg: markupMsg(msg)});
     }
 
     function showError(msg) {
-      $scope.alerts.unshift({type: 'danger', msg: msg});
+      $scope.alerts.unshift({type: 'danger', msg: markupMsg(msg)});
     }
 
+    function markupMsg(msg) {
+      return msg.replace(/\n/g, '<br>');
+    }
   }]);
 

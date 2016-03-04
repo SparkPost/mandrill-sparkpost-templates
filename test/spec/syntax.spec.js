@@ -39,6 +39,11 @@ function supportedHelperBlock(test, helper) {
   expect(infractions).to.have.length(0);
 }
 
+function supportedMustacheHelper(test, helper) {
+  var infractions = infractionsFrom(test, '{{' + helper + ' arg}}');
+  expect(infractions).to.have.length(0);
+}
+
 describe('Syntax checking pass', function() {
   afterEach('dump AST on failure', function() {
     dumpAST(this.currentTest, this);
@@ -58,16 +63,22 @@ describe('Syntax checking pass', function() {
 
   it('should collect unsupported helpers', function() {
     var self = this;
-    ['upper', 'lower', 'title', 'url', 'date', 'striptags', 'outOfLeftFieldHelper'].map(
+    ['url', 'date', 'striptags', 'outOfLeftFieldHelper'].map(
       function(elt) {
         unsupportedHelper(self, elt);
       }
     );
   });
 
-  it('should ignore supported helpers', function() {
+  it('should ignore supported block helpers', function() {
     supportedHelperBlock(this, 'if');
     supportedHelperBlock(this, 'each');
+  });
+
+  it('should ignore supported single line helpers', function() {
+    supportedMustacheHelper(this, 'upper');
+    supportedMustacheHelper(this, 'lower');
+    supportedMustacheHelper(this, 'title');
   });
 
   it('should accept all syntax the translator can accept', function() {
