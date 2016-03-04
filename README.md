@@ -1,11 +1,11 @@
-## Prerequisites
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ewandennis/mandrill2sparkpost/tree/heroku)
+
+## Setup: Local
+
+### Prerequisites
 
  - node 0.12+
  - npm 2.11.3+
- - mocha
- - grunt
-
-## Setup: Local
 
 ```bash
 git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
