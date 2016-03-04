@@ -10,6 +10,8 @@ var ctrl = require('../lib')
 // Error: {errors: ['...', ...]
 // Response: {result: true}
 router.post('/', function(req, res) {
+  var spAPIKey;
+
   // Validation
   if (!req.body.hasOwnProperty('mandrillTemplateName')) {
     return res.clientError('Expected mandrillTemplateName field');
@@ -19,8 +21,16 @@ router.post('/', function(req, res) {
     return res.clientError('Expected mandrillAPIKey field');
   }
 
-  if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
+  if (req.body.hasOwnProperty('useHerokuSPAPIKey')) {
+    if (process.env.SPARKPOST_API_KEY) {
+      spAPIKey = process.env.SPARKPOST_API_KEY;
+    } else {
+      return res.clientError('Heroku SparkPost API key not found. Are we running under Heroku with the SparkPost addon?');
+    }
+  } else if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
     return res.clientError('Expected sparkPostAPIKey field');
+  } else {
+    spAPIKey = req.body.sparkPostAPIKey;
   }
 
   extractMandrillTemplate(req.body.mandrillAPIKey, req.body.mandrillTemplateName)
@@ -30,7 +40,7 @@ router.post('/', function(req, res) {
     if (appendUUID) {
       sparkPostTpl.id += require('uuid').v4();
     }
-    return storeSparkPostTemplate(req.body.sparkPostAPIKey, sparkPostTpl);
+    return storeSparkPostTemplate(spAPIKey, sparkPostTpl);
 
   }).then(function(storeResult) {
 

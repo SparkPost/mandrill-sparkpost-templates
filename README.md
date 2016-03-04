@@ -4,7 +4,6 @@
  - npm 2.11.3+
  - mocha
  - grunt
- - browserify
 
 ## Setup: Local
 
@@ -15,6 +14,26 @@ npm run start
 ```
 
 You now have a server running on port 3000.
+
+## Setup: Heroku
+
+```bash
+git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
+heroku create
+git push heroku master
+heroku open
+```
+
+## Updating Handlebars
+
+If you make a change to the Handlebars subrepo, you must rebuild it:
+
+```bash
+npm run buildhb
+npm run disthb
+```
+
+Remember to commit the updated Handlebars build in vendor/handlebars.
 
 ## The API
 
@@ -77,3 +96,4 @@ Content-Type: application/json
 ```bash
 npm run test
 ```
+
