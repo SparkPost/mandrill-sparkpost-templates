@@ -1,7 +1,7 @@
 {
   "name": "mandrill2sparkpost",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Import Mandrill Handlebars templates into SparkPost",
   "main": "index.js",
   "scripts": {
     "buildhb": "cd handlebars && npm install && npm install --dev && node_modules/.bin/grunt && cd ..",
