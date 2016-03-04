@@ -15,15 +15,6 @@ npm run start
 
 You now have a server running on port 3000.
 
-## Setup: Heroku
-
-```bash
-git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
-heroku create
-git push heroku master
-heroku open
-```
-
 ## Updating Handlebars
 
 If you make a change to the Handlebars subrepo, you must rebuild it:
