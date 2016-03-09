@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
     });
   }
 
-  res.clientError = function(err) { errorResponse(400, [err]); };
+  res.clientError = function(err) { errorResponse(400, [{message: err}]); };
   res.serverError = function(err) { errorResponse(500, [err]); };
   res.clientErrorList = function(errList) { errorResponse(400, errList); };
   res.serverErrorList = function(errList) { errorResponse(500, errList); };

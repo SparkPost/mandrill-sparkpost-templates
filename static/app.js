@@ -50,7 +50,7 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
         } else {
           console.error(err);
           showError('Internal error HTTP=' + err.statusText +
-            '.  Check your console for detail and please ping us on Slack in #template-migration for help.'
+            '.  Check your console for detail and please ping us on <a href="http://slack.sparkpost.com/">Slack</a> or help.'
           );
         }
       }).finally(function() {
