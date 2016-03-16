@@ -19,12 +19,14 @@
     "express": "^4.13.4",
     "handlebars": "file:vendor/handlebars",
     "mandrill-api": "^1.0.45",
+    "morgan": "^1.7.0",
     "q": "^1.4.1",
     "sparkpost": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "request": "^2.69.0"
   },
   "engines": {
     "node": "~0.12",
