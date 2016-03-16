@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mdrlTranslationApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SparkPost: Mandrill Template Translation</title>
+
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="main.css" rel="stylesheet">
+
+    <link rel="icon" href="favicon-16.png" sizes="16x16" />
+    <link rel="icon" href="favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-48.png" sizes="48x48" />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <script src="vendor/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="vendor/angular-ui-ace/ui-ace.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="translate.js"></script>
+  </head>
+
+  <body ng-controller="TranslatorControl">
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+    </nav>
+    <div ng-show="loading" style="position: absolute; width: 100px; height: 100px; top: calc(50% - 70px); left: calc(50% - 50px);"> LOADING
+    </div>
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <p>From here you can translate a template from Mandrill to SparkPost. To get started, paste your Mandrill template into the editor on the left below.</p>
+            <button ng-disabled="loading" ng-click="translate()" class="btn btn-success btn-lg">Translate!</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+              <div><pre ng-show="alert.pre" ng-bind="alert.msg"></pre></div>
+              <div ng-show="!alert.pre" ng-bind="alert.msg"></div>
+            </uib-alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Mandrill Template</h3>
+            <div id="mandrillEditor" ui-ace="{mode:'handlebars', onLoad: mdlEditorLoaded}"></div>
+          </div> 
+          <div class="col-md-6">
+            <h3>Translated SparkPost Template</h3>
+            <div id="sparkPostEditor" ui-ace="{mode:'handlebars', onLoad: spEditorLoaded}" readonly></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

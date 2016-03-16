@@ -24,15 +24,16 @@ router.post('/', function(req, res) {
      code: req.body.mandrillTemplate
    });
 
+    // Response
+    res.json({sparkPostTemplate: tpl.content.html});
+
   } catch (err) {
     if (!ctrl.errorResponse(err, res)) {
-      res.serverError('Unexpected error: ' + err);
+      err.message = 'Unexpected error: ' + err;
+      res.serverError(err);
       throw err;
     }
   }
-
-  // Response
-  res.json({sparkPostTemplate: tpl.content.html});
 });
 
 module.exports = router;

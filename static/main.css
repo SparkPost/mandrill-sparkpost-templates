@@ -73,3 +73,7 @@ body.loading:after {
   }
 }
 
+.ace_editor {
+  height: 30em;
+}
+
