@@ -40,3 +40,36 @@ p.betaFlag {
   color: #888;
 }
 
+body.loading:after {
+  /* with no content, nothing is rendered */
+  content: "";
+  position: fixed;
+  /* element stretched to cover during rotation an aspect ratio up to 1/10 */
+  top: -500%;
+  left: -500%;
+  right: -500%;
+  bottom: -500%;
+  z-index: 9999;
+  pointer-events: none;
+  /* background */
+  background-color: rgba(0,0,0,0.6);
+  background-image: url(spinner.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100px 100px;
+  /* animation */
+  -webkit-animation-name: linearRotate;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes linearRotate {
+  from {
+    -webkit-transform:rotate(0deg);
+  }
+  to {
+    -webkit-transform:rotate(360deg);
+  }
+}
+

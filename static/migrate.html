@@ -26,14 +26,12 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-controller="MigratorControl">
+  <body ng-controller="MigratorControl" ng-class="loading ? 'loading' : ''">
     <nav class="navbar navbar-fixed-top">
       <div class="container">
         <a class="navbar-brand" href="https://www.sparkpost.com"><img src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
       </div>
     </nav>
-    <div ng-show="loading" style="position: absolute; width: 100px; height: 100px; top: calc(50% - 70px); left: calc(50% - 50px);"> LOADING
-    </div>
     <div class="jumbotron">
       <div class="container">
         <h1>Mandrill Template Migration</h1>
