@@ -1,6 +1,13 @@
+This is a Mandrill to SparkPost email template migration tool.
+It supports translation of Mandrill's Handlebars syntax into equivalent SparkPost syntax.
+
+You can deploy it directly to Heroku:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-## Setup: Local
+If you prefer you can deploy it into your own environment using the instructions below.
+
+## Local Deployment
 
 ### Prerequisites
 
@@ -15,18 +22,29 @@ npm run start
 
 You now have a server running on port 3000.
 
-## Updating Handlebars
+## Usage
 
-If you make a change to the Handlebars subrepo, you must rebuild it:
+### The UI
 
-```bash
-npm run buildhb
-npm run disthb
+Once deployed, you can migrate templates between services or translate template text directly
+through the web UI.
+
+### The API
+
+If you prefer direct API access or you want to automate your template migration, here's how the API endpoints work.
+
+### API Errors
+
+On error, the API endpoints will return a non-200 status code and a JSON error object containing a list of errors:
+
+```json
+{
+  "errors": [
+    {"message": "Description of a thing that did not work."},
+    {"message": "..."}
+  ]
+}
 ```
-
-Remember to commit the updated Handlebars build in vendor/handlebars.
-
-## The API
 
 ### /api/translate: Template Translation
 
@@ -82,7 +100,26 @@ Content-Type: application/json
 }
 ```
 
-## Running Tests
+### Contributing
+
+We *welcome* your contributions.  Check out our [contributor notes](CONTRIBUTING.md) for details on how to help out.
+
+### ChangeLog
+
+[See ChangeLog here](CHANGELOG.md)
+
+### Updating Handlebars
+
+If you make a change to the Handlebars subrepo, you must rebuild it:
+
+```bash
+npm run buildhb
+npm run disthb
+```
+
+Remember to commit the updated Handlebars build in vendor/handlebars.
+
+### Running Tests
 
 ```bash
 npm run test
