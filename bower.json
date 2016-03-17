@@ -23,6 +23,7 @@
     "angular-bootstrap": "^1.2.1",
     "jquery": "^2.2.1",
     "angular-sanitize": "^1.5.1",
-    "angular-ui-ace": "bower"
+    "angular-ui-ace": "bower",
+    "font-awesome": "^4.5.0"
   }
 }

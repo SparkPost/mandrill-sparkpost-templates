@@ -9,62 +9,49 @@
 
     <title>SparkPost: Mandrill Template Translation</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" -->
-
-    <!-- Custom styles for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link rel="icon" href="favicon-16.png" sizes="16x16" />
+    <link rel="icon" href="favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-48.png" sizes="48x48" />
+    <link rel="shortcut icon" href="favicon.ico" />
   </head>
-
   <body>
-    <nav class="navbar navbar-fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+    <div class="titlebar">
+      <a href="https://www.sparkpost.com">
+        <img class="navbar-logo" src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150">
+      </a>
+    </div>
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <h2>Mandrill Template Translation</h2>
+        <p><small>This is a Mandrill to SparkPost template translation service.  From here you can translate a template from file or migrate one directly from your Mandrill account into SparkPost.</small></p>
+        <p>
+          <a class="btn btn-success btn-sml" href="migrate.html" role="button">MIGRATE A TEMPLATE &raquo;</a>
+          <a class="btn btn-success btn-sml" href="translate.html" role="button">TRANSLATE TEMPLATE TEXT &raquo;</a>
+        </p>
       </div>
-    </nav>
-
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Mandrill Template Translation</h1>
-        <p>This is a SparkPost to Mandrill template translation service.  From here you can translate a template from file or migrate one directly from your Mandrill account into SparkPost.</p>
-        <div class="row">
-          <div class="col-md-6">
-            <h2 class="good">Supported Features</h2>
-            <ul>
-              <li><strong>Basic Handlebars syntax:</strong> variables, logic, iteration</li>
-              <li><strong>Logic and iteration:</strong> if, each</li>
-              <li><strong>Mandrillisms:</strong> elseif, backtick conditionals <code>`x &lt; 10`</code></li>
-              <li><strong>Inline helpers:</strong> upper, lower and title are accepted but ignored</li>
-            </ul>
-          </div> 
-          <div class="col-md-6">
-            <h2 class="bad">Unsupported Features</h2>
-            <ul>
-              <li><strong>Mailchimp syntax</strong></li>
-              <li><strong>HTML escaping:</strong> please put your markup in your template ;)</li>
-              <li><strong>Inline helpers:</strong> url, date, striptags</li>
-              <li><strong>Block helpers:</strong> unless, with</li>
-            </ul>
-          </div> 
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-2">
-            <a class="btn btn-success btn-lg" href="migrate.html" role="button">Migrate A Template &raquo;</a>
-          </div>
-          <div class="col-md-4">
-            <a class="btn btn-success btn-lg" href="translate.html" role="button">Translate Template Text &raquo;</a>
-          </div>
-        </div>
+      <div class="row">
+        <div class="col-sm-6 supported">
+          <h4>Supported Features</h4>
+          <ul>
+            <li><strong>Basic Handlebars syntax:</strong><br> variables, logic, iteration</li>
+            <li><strong>Logic and iteration:</strong><br> if, each</li>
+            <li><strong>Mandrillisms:</strong><br> elseif, backtick conditionals <code>`x &lt; 10`</code></li>
+            <li><strong>Inline helpers:</strong><br> upper, lower and title are accepted but ignored</li>
+          </ul>
+        </div> 
+        <div class="col-sm-6 unsupported">
+          <h4>Unsupported Features</h4>
+          <ul>
+            <li><strong>Mailchimp syntax</strong></li>
+            <li><strong>HTML escaping:</strong><br> please put your markup in your template ;)</li>
+            <li><strong>Inline helpers:</strong><br> url, date, striptags</li>
+            <li><strong>Block helpers:</strong><br> unless, with</li>
+          </ul>
+        </div> 
       </div>
     </div>
   </body>
