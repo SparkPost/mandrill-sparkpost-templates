@@ -41,7 +41,7 @@ On error, the API endpoints will return a non-200 status code and a JSON error o
 {
   "errors": [
     {"message": "Description of a thing that did not work."},
-    ...
+    {"message": "..."}
   ]
 }
 ```
