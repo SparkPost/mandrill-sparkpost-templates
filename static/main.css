@@ -1,43 +1,109 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 80px;
-  padding-bottom: 20px;
+  padding: 0;
+  margin: 0;
+  background-color: white;
 }
 
-.jumbotron {
-  padding-top: 0.5em;
+* {
+  border-radius: 0 !important;
+}
+
+li {
   padding-bottom: 0.5em;
 }
 
-.jumbotron h1 {
-  text-align: center;
+.jumbotron {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
 }
 
-.navbar {
+.jumbotron h2 {
+  text-align: center;
+  color: #fa6423;
+  margin-top: 0;
+  padding-top: 40px;
+}
+
+.jumbotron p {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 1.5em;
+  color: #414146;
+}
+
+.jumbotron .btn {
+  background-color: #fa6423;
+  border-color: #fa6423;
+}
+
+.supported {
+  background-color: #eee;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  padding-left: 2em;
+  padding-top: 1em;
+  height: 20em;
+}
+
+.unsupported {
+  background-color: #eee;
+  border-style: solid solid solid none;
+  border-width: 1px;
+  border-color: #ccc;
+  padding-left: 2em;
+  padding-top: 1em;
+  height: 20em;
+}
+
+.supported h4 {
+  text-size: 12pt;
+  color: #9bcd5a;
+  padding-left: 2em;
+}
+
+.unsupported h4 {
+  text-size: 12pt;
+  color: #0097b3;
+  padding-left: 2em;
+}
+
+.supported ul {
+  list-style: none;
+}
+
+.unsupported ul {
+  list-style: none;
+}
+
+.supported li:before {
+  font-family: FontAwesome;
+  content: "\f058";
+  color: #9bcd5a;
+  padding-right: 0.5em;
+}
+
+.unsupported li:before {
+  font-family: FontAwesome;
+  content: "\f057";
+  color: #0097b3;
+  padding-right: 0.5em;
+}
+
+.titlebar {
   min-height: 80px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   background-color: #fa6423;
   font-family: "Helvetica Neue";
   font-weight: 500;
   font-size: 12px;
 }
 
-.navbar .navbar-nav > li > a {
-  color: #fff;
-}
-
-.good {
-  color: #5cb85c;
-}
-
-.bad {
-  color: #d9534f;
-}
-
-p.betaFlag {
-  text-align: center;
-  font-weight: 500;
-  color: #888;
+.navbar-logo {
+  display: block;
+  padding-top: 1em;
+  margin: auto;
 }
 
 body.loading:after {

@@ -10,7 +10,7 @@
     <title>SparkPost: Mandrill Template Translation</title>
 
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
 
     <link rel="icon" href="favicon-16.png" sizes="16x16" />
@@ -25,15 +25,14 @@
     <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="migrate.js"></script>
   </head>
-
   <body ng-controller="MigratorControl" ng-class="loading ? 'loading' : ''">
-    <nav class="navbar navbar-fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
-      </div>
-    </nav>
-    <div class="jumbotron">
-      <div class="container">
+    <div class="titlebar">
+      <a href="https://www.sparkpost.com">
+        <img class="navbar-logo" src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150">
+      </a>
+    </div>
+    <div class="container-fluid">
+      <div class="jumbotron">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <p>From here you can migrate a template from Mandrill to SparkPost.<br/>You will need a few things to hand to get started:</p>
@@ -51,7 +50,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+              <div ng-bind-html="alert.msg"></div>
+            </uib-alert>
             <form name="migrateFrm" ng-submit="migrate(migrateFrm.$valid)" novalidate>
               <div class="form-group">
                 <label for="mdrlAPIKey">Mandrill API key <span class="text-warning" ng-show="migrateFrm.mdrlAPIKey.$touched && migrateFrm.mdrlAPIKey.$invalid">8+ chars required</span></label>
@@ -80,13 +82,6 @@
               <button ng-disabled="loading || migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
             </form>
           </div> 
-          <div class="col-md-6">
-            <h3>Migration Results</h3>
-            <hr>
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-              <div ng-bind-html="alert.msg"></div>
-            </uib-alert>
-          </div>
         </div>
       </div>
     </div>
