@@ -100,7 +100,13 @@ Content-Type: application/json
 }
 ```
 
-## Development
+### Contributing
+
+We *welcome* your contributions.  Check out our [contributor notes](CONTRIBUTING.md) for details on how to help out.
+
+### ChangeLog
+
+[See ChangeLog here](CHANGELOG.md)
 
 ### Updating Handlebars
 
