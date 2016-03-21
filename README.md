@@ -1,13 +1,33 @@
 This is a Mandrill to SparkPost email template migration tool.
 It supports translation of Mandrill's Handlebars syntax into equivalent SparkPost syntax.
 
-You can deploy it directly to Heroku:
+The tool presents a simple web UI for migrating templates directly from your Mandrill account to SparkPost as well as translating Mandrill template text directly into its SparkPost equivalent.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+If you want to automate your migration, the tool also has an API.
+
+See below for details on [deployment on Heroku](#heroku-deployment), [manual deployment](#manual-deployment) and [API use](#the-api).
+
+## Supported Features
+
+- *Basic Handlebars syntax:* variables, logic, iteration
+- *Logic and iteration:* `if`, `each`
+- *Mandrillisms:* `elseif`, backtick conditionals ``` `x < 10` ```
+- *Inline helpers:* `upper`, `lower` and `title` are accepted but ignored
+
+## Unsupported Features
+
+- *MailChimp syntax*
+- *HTML escaping:* please put your markup in your template
+- *Inline helpers:* `url`, `data`, `striptags`
+- *Block heplpers:* `unless`, `with`
+
+## Heroku Deployment
+
+You can deploy it directly to Heroku: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Manual Deployment
 
 If you prefer you can deploy it into your own environment using the instructions below.
-
-## Local Deployment
 
 ### Prerequisites
 
