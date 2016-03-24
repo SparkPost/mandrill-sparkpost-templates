@@ -15,10 +15,10 @@ See below for details on [deployment on Heroku](#heroku-deployment), [manual dep
 - *Logic and iteration:* `if`, `each`
 - *Mandrillisms:* `elseif`, backtick conditionals ``` `x < 10` ```
 - *Inline helpers:* `upper`, `lower` and `title` are accepted but ignored
+- *MailChimp merge tags:* `*|variable|*`
 
 ## Unsupported Features
 
-- *MailChimp syntax*
 - *HTML escaping:* please put your markup in your template
 - *Inline helpers:* `url`, `data`, `striptags`
 - *Block heplpers:* `unless`, `with`
@@ -146,4 +146,3 @@ Remember to commit the updated Handlebars build in vendor/handlebars.
 ```bash
 npm run test
 ```
-

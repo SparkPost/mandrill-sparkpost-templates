@@ -44,7 +44,7 @@ li {
   border-color: #ccc;
   padding-left: 2em;
   padding-top: 1em;
-  height: 20em;
+  height: 22em;
 }
 
 .unsupported {
@@ -54,7 +54,7 @@ li {
   border-color: #ccc;
   padding-left: 2em;
   padding-top: 1em;
-  height: 20em;
+  height: 22em;
 }
 
 .supported h4 {
@@ -142,4 +142,3 @@ body.loading:after {
 .ace_editor {
   height: 30em;
 }
-
