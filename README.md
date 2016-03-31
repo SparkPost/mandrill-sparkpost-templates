@@ -21,7 +21,7 @@ See below for details on [deployment on Heroku](#heroku-deployment), [manual dep
 
 - *HTML escaping:* please put your markup in your template
 - *Inline helpers:* `url`, `data`, `striptags`
-- *Block heplpers:* `unless`, `with`
+- *Block helpers:* `unless`, `with`
 
 ## Heroku Deployment
 
@@ -37,7 +37,7 @@ If you prefer you can deploy it into your own environment using the instructions
  - npm 2.11.3+
 
 ```bash
-git clone --recursive https://github.com/ewandennis/mandrill2sparkpost.git
+git clone --recursive https://github.com/SparkPost/mandrill-sparkpost-templates.git
 npm install
 npm run start
 ```
