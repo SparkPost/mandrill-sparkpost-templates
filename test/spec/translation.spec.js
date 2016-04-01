@@ -26,6 +26,10 @@ describe('Mandrill template source prep', function() {
     expect(translation.sourcePrep('{{#if x}}\n\tx\n{{elseif y}}\n\ty\n{{elseif z}}\n\tz\n{{/if}}\n'))
       .to.equal('{{#if x}}\n\tx\n{{else if y}}\n\ty\n{{else if z}}\n\tz\n{{/if}}\n');
   });
+
+  it('should translate MailChimp merge tags into handlebars form', function() {
+    expect(translation.sourcePrep('*|mergeTag|*')).to.equal('{{mergeTag}}');
+  });
 });
 
 describe('Mandrill to SparkPost template translator', function() {
