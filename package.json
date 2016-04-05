@@ -1,6 +1,6 @@
 {
   "name": "mandrill2sparkpost",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Import Mandrill Handlebars templates into SparkPost",
   "main": "index.js",
   "scripts": {
