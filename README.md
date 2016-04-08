@@ -15,7 +15,7 @@ See below for details on [deployment on Heroku](#heroku-deployment), [manual dep
 - *Logic and iteration:* `if`, `each`
 - *Mandrillisms:* `elseif`, backtick conditionals ``` `x < 10` ```
 - *Inline helpers:* `upper`, `lower` and `title` are accepted but ignored
-- *MailChimp merge tags:* `*|variable|*`
+- *MailChimp merge tags:* `*|variable_name|*`
 
 ## Unsupported Features
 

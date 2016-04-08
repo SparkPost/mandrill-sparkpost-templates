@@ -30,6 +30,10 @@ describe('Mandrill template source prep', function() {
   it('should translate MailChimp merge tags into handlebars form', function() {
     expect(translation.sourcePrep('*|mergeTag|*')).to.equal('{{mergeTag}}');
   });
+
+  it('should support MailChimp merge tag names containing underscores', function() {
+    expect(translation.sourcePrep('*|merge_tag|*')).to.equal('{{merge_tag}}');
+  });
 });
 
 describe('Mandrill to SparkPost template translator', function() {
