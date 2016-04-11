@@ -34,6 +34,13 @@ describe('Mandrill template source prep', function() {
   it('should support MailChimp merge tag names containing underscores', function() {
     expect(translation.sourcePrep('*|merge_tag|*')).to.equal('{{merge_tag}}');
   });
+
+  it('should support MailChimp conditionals merge tags', function() {
+    expect(translation.sourcePrep('*|IF:X|*\n\tx\n*|ELSE:|*\n\ty\n*|END:IF|*'))
+      .to.equal('{{#if X}}\n\tx\n{{else}}\n\ty\n{{/if}}');
+    expect(translation.sourcePrep('*|IF:MERGE=x|*\n\tx\n*|ELSEIF:MERGE=y|*\n\ty\n*|END:IF|*'))
+      .to.equal('{{#if MERGE=x}}\n\tx\n{{else if MERGE=y}}\n\ty\n{{/if}}');
+  });
 });
 
 describe('Mandrill to SparkPost template translator', function() {
