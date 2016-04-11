@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.1.3 (2016-04-11)
+ - Addressed issue 10: include description in SparkPost errors
+
 ### v0.1.2 (2016-04-08)
  - Addressed issue 6: underscores in MailChimp merge tags
 
