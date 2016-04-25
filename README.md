@@ -98,6 +98,8 @@ Content-Type: application/json
 
 Extract a template from Mandrill, translate it and import it into SparkPost.
 
+Note: your SparkPost API key must include Templates Read/Write privileges for use with the `migrate` endpoint and the migration UI.
+
 Request:
 
 ```
