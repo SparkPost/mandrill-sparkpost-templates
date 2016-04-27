@@ -38,6 +38,7 @@ If you prefer you can deploy it into your own environment using the instructions
 
 ```bash
 git clone --recursive https://github.com/SparkPost/mandrill-sparkpost-templates.git
+cd mandrill-sparkpost-templates
 npm install
 npm run start
 ```
