@@ -110,5 +110,12 @@ describe('Mandrill to SparkPost template translator', function() {
     expect(translate(this, '{{arr.[0].subArr.[10]}}'))
       .to.equal('{{arr[1].subArr[11]}}');
   });
+
+  it('should preserve whitespace around translated tags', function() {
+    var ifclause = '\n text'
+      , elseclause = ' \n else stuff';
+    expect(translate(this, '{{#if x}}' + ifclause + '{{else}}' + elseclause + '{{/if}}'))
+      .to.equal('{{if x}}' + ifclause + '{{else}}' + elseclause + '{{end}}');
+  });
 });
 
