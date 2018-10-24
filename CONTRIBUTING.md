@@ -4,15 +4,26 @@ Transparency is one of our core values, and we encourage developers to contribut
 
 ## Prerequisite to contribution
 
-Before writing code, please search for existing issues or create a new issue. 
+Before writing code, please search for existing issues or create a new issue.
 
 ## Contribution Steps
 1. Fork this repository
-2. Create a new branch named after the issue you’ll be fixing (include the issue number as the branch name, example: Issue in GH is #8 then the branch name should be ISSUE-8)) 
+2. Create a new branch named after the issue you’ll be fixing (include the issue number as the branch name, example: Issue in GH is #8 then the branch name should be ISSUE-8))
 3. Write corresponding tests and code (only what is needed to satisfy the issue and tests please)
     * Include your tests in the 'test' directory in an appropriate test file
     * Write code to satisfy the tests
     * Run tests using ```npm run test```
 5. Ensure automated tests pass
-6. Submit a new Pull Request applying your feature/fix branch to the master branch. 
+6. Submit a new Pull Request applying your feature/fix branch to the master branch.
 
+
+### Updating Handlebars
+
+If you make a change to the Handlebars subrepo, you must rebuild it:
+
+```bash
+npm run buildhb
+npm run disthb
+```
+
+Remember to commit the updated Handlebars build in vendor/handlebars.
