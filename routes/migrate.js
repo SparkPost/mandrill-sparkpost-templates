@@ -22,13 +22,7 @@ router.post('/', function(req, res) {
     return res.clientError('Expected mandrillAPIKey field');
   }
 
-  if (req.body.hasOwnProperty('useHerokuSPAPIKey') && req.body.useHerokuSPAPIKey) {
-    if (process.env.SPARKPOST_API_KEY) {
-      spAPIKey = process.env.SPARKPOST_API_KEY;
-    } else {
-      return res.clientError('Heroku SparkPost API key not found. Are we running under Heroku with the SparkPost addon?');
-    }
-  } else if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
+  if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
     return res.clientError('Expected sparkPostAPIKey field');
   } else {
     spAPIKey = req.body.sparkPostAPIKey;
@@ -61,4 +55,3 @@ router.post('/', function(req, res) {
 });
 
 module.exports = router;
-

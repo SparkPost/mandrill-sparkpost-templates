@@ -42,9 +42,7 @@
                 <dt>Mandrill template name</dt>
                 <dd>Not the slug, the name :)</dd>
                 <dt>SparkPost API Key</dt>
-                <dd>Requires <code>Templates Read/Write</code> privileges<br>
-                  <em>Note: If you're running the SparkPost Heroku addon, we have your API key to hand already.</em>
-                </dd>
+                <dd>Requires <code>Templates Read/Write</code> privileges<br></dd>
                 </dt>
               </dl>
           </div>
@@ -69,11 +67,6 @@
               </div>
               <div class="form-group">
                 <div class="checkbox">
-                  <label for="useHerokuSPAPIKey">
-                    <input type="checkbox" ng-model="useHerokuSPAPIKey" name="useHerokuSPAPIKey" id="useHerokuSPAPIKey"> Use your Heroku SparkPost addon key
-                  </label>
-                </div>
-                <div class="checkbox">
                   <label for="useSandboxDomain">
                     <input type="checkbox" ng-model="useSandboxDomain" name="useSandboxDomain" id="useSandboxDomain"> Use sandbox domain <code>{{sandboxDomain}}</code> as the from address
                   </label>
@@ -81,10 +74,9 @@
               </div>
               <button ng-disabled="loading || migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
             </form>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
   </body>
 </html>
-
