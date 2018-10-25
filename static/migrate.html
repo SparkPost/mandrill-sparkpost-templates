@@ -70,6 +70,11 @@
                     <input type="checkbox" ng-model="useSandboxDomain" name="useSandboxDomain" id="useSandboxDomain"> Use sandbox domain <code>{{sandboxDomain}}</code> as the from address
                   </label>
                 </div>
+                <div class="checkbox">
+                  <label for="sparkPostEU">
+                    <input type="checkbox" ng-model="sparkPostEU" name="sparkPostEU" id="sparkPostEU">SparkPost EU
+                  </label>
+                </div>
               </div>
               <button ng-disabled="loading || migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
             </form>

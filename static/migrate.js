@@ -10,6 +10,7 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
     $scope.mdrlTpl = '';
     $scope.spAPIKey = '';
     $scope.useSandboxDomain = true;
+    $scope.sparkPostEU = false;
     $scope.sandboxDomain = '';
 
     $http.get('/api/sandboxDomain').then(function(result) {
@@ -32,7 +33,8 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
           mandrillAPIKey: $scope.mdrlAPIKey,
           mandrillTemplateName: $scope.mdrlTpl,
           sparkPostAPIKey: $scope.spAPIKey,
-          useSandboxDomain: $scope.useSandboxDomain
+          useSandboxDomain: $scope.useSandboxDomain,
+          sparkPostEU: $scope.sparkPostEU
         }
       }).then(function(result) {
         if (result.errors) {

@@ -11,7 +11,8 @@ var ctrl = require('../lib')
 // Response: {result: true}
 router.post('/', function(req, res) {
   var spAPIKey
-    , useSandboxDomain = false;
+    , useSandboxDomain = false
+    , options = {};
 
   // Validation
   if (!req.body.hasOwnProperty('mandrillTemplateName')) {
@@ -36,10 +37,12 @@ router.post('/', function(req, res) {
   .then(function(mandrillTpl) {
 
     var sparkPostTpl = ctrl.translateTemplate(mandrillTpl, {useSandboxDomain: useSandboxDomain});
-    if (appendUUID) {
-      sparkPostTpl.id += require('uuid').v4();
+
+    if (req.body.sparkPostEU) {
+      options.endpoint = 'https://api.eu.sparkpost.com:443';
     }
-    return storeSparkPostTemplate(spAPIKey, sparkPostTpl);
+
+    return storeSparkPostTemplate(spAPIKey, sparkPostTpl, options);
 
   }).then(function(storeResult) {
 
