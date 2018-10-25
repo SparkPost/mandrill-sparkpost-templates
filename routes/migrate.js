@@ -24,9 +24,9 @@ router.post('/', function(req, res) {
 
   if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
     return res.clientError('Expected sparkPostAPIKey field');
-  } else {
-    spAPIKey = req.body.sparkPostAPIKey;
   }
+
+  spAPIKey = req.body.sparkPostAPIKey;
 
   if (req.body.hasOwnProperty('useSandboxDomain')) {
     useSandboxDomain = req.body.useSandboxDomain;
