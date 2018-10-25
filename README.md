@@ -29,14 +29,14 @@ Deploy it locally or on another environment using the instructions below.
 
 ### Prerequisites
 
- - node 0.12+
- - npm 2.11.3+
+ - node 8
+ - npm 6
 
 ```bash
 git clone --recursive https://github.com/SparkPost/mandrill-sparkpost-templates.git
 cd mandrill-sparkpost-templates
 npm install
-npm run start
+npm start
 ```
 
 You now have a server running on port `3000`.
@@ -58,7 +58,7 @@ If you prefer direct API access to automate your template migration, here's how 
 
 #### /api/translate: Template Translation
 
-Accepts a Mandrill template and converts it SparkPost format.
+Accepts a Mandrill template and converts it to SparkPost format.
 
 Request:
 
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 #### /api/migrate: Migration From Mandrill To SparkPost
 
-Extracts a template from Mandrill, translates it and imports it into SparkPost. Your SparkPost API key must include Templates Read/Write permission in order to add templates to the account. Manage your API keys from the [API Keys page](https://app.sparkpost.com/account/api-keys)([EU](https://app.eu.sparkpost.com/account/api-keys)).
+Extracts a template from Mandrill, translates it and imports it into SparkPost. Your SparkPost API key must include `Templates Read/Write` permission in order to add templates to your account. Manage your API keys from the [API Keys page](https://app.sparkpost.com/account/api-keys)([EU](https://app.eu.sparkpost.com/account/api-keys)).
 
 Request:
 

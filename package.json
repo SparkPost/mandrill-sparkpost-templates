@@ -12,6 +12,10 @@
   },
   "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SparkPost/mandrill-sparkpost-templates.git"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "bower": "^1.7.7",
@@ -25,11 +29,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^5.2.0",
     "request": "^2.69.0"
   },
   "engines": {
-    "node": "~0.12",
-    "npm": "~2"
+    "node": "~8",
+    "npm": "~6"
   }
 }
