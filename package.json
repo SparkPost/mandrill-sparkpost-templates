@@ -10,7 +10,7 @@
     "test": "mocha test/spec",
     "start": "node index.js"
   },
-  "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
+  "author": "SparkPost",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
