@@ -2,6 +2,7 @@
 
 ### v1.0.0 (2018-10-25)
 - Removed link to SparkPost Heroku add-on.
+- Moved to Node 8 and NPM 6.
 
 ### v0.1.3 (2016-04-11)
  - Addressed issue 10: include description in SparkPost errors
