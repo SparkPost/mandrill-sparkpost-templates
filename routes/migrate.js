@@ -11,7 +11,8 @@ var ctrl = require('../lib')
 // Response: {result: true}
 router.post('/', function(req, res) {
   var spAPIKey
-    , useSandboxDomain = false;
+    , useSandboxDomain = false
+    , options = {};
 
   // Validation
   if (!req.body.hasOwnProperty('mandrillTemplateName')) {
@@ -22,17 +23,11 @@ router.post('/', function(req, res) {
     return res.clientError('Expected mandrillAPIKey field');
   }
 
-  if (req.body.hasOwnProperty('useHerokuSPAPIKey') && req.body.useHerokuSPAPIKey) {
-    if (process.env.SPARKPOST_API_KEY) {
-      spAPIKey = process.env.SPARKPOST_API_KEY;
-    } else {
-      return res.clientError('Heroku SparkPost API key not found. Are we running under Heroku with the SparkPost addon?');
-    }
-  } else if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
+  if (!req.body.hasOwnProperty('sparkPostAPIKey')) {
     return res.clientError('Expected sparkPostAPIKey field');
-  } else {
-    spAPIKey = req.body.sparkPostAPIKey;
   }
+
+  spAPIKey = req.body.sparkPostAPIKey;
 
   if (req.body.hasOwnProperty('useSandboxDomain')) {
     useSandboxDomain = req.body.useSandboxDomain;
@@ -42,10 +37,12 @@ router.post('/', function(req, res) {
   .then(function(mandrillTpl) {
 
     var sparkPostTpl = ctrl.translateTemplate(mandrillTpl, {useSandboxDomain: useSandboxDomain});
-    if (appendUUID) {
-      sparkPostTpl.id += require('uuid').v4();
+
+    if (req.body.sparkPostEU) {
+      options.endpoint = 'https://api.eu.sparkpost.com:443';
     }
-    return storeSparkPostTemplate(spAPIKey, sparkPostTpl);
+
+    return storeSparkPostTemplate(spAPIKey, sparkPostTpl, options);
 
   }).then(function(storeResult) {
 
@@ -61,4 +58,3 @@ router.post('/', function(req, res) {
 });
 
 module.exports = router;
-

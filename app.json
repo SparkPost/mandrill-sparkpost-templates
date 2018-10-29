@@ -1,10 +1,6 @@
 {
   "name": "Templates Mandrill->SparkPost",
   "description": "Automatically extract, translate and import Mandrill Handlebars templates into Sparkpost",
-  "repository": "https://github.com/ewandennis/mandrill2sparkpost",
-  "keywords": ["sparkpost", "mandrill", "template", "handlebars"],
-  "addons": [
-    "sparkpost"
-  ]
+  "repository": "https://github.com/SparkPost/mandrill-sparkpost-templates",
+  "keywords": ["sparkpost", "mandrill", "template", "handlebars"]
 }
-

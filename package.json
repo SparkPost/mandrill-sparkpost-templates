@@ -1,6 +1,6 @@
 {
   "name": "mandrill2sparkpost",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Import Mandrill Handlebars templates into SparkPost",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,12 @@
     "test": "mocha test/spec",
     "start": "node index.js"
   },
-  "author": "Ewan Dennis <ewandennis@users.noreply.github.com>",
+  "author": "SparkPost",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SparkPost/mandrill-sparkpost-templates.git"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "bower": "^1.7.7",
@@ -25,11 +29,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^5.2.0",
     "request": "^2.69.0"
   },
   "engines": {
-    "node": "~0.12",
-    "npm": "~2"
+    "node": "~8",
+    "npm": "~6"
   }
 }

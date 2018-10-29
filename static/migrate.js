@@ -3,14 +3,14 @@
 var mdrlMigrationApp = angular.module('mdrlMigrationApp', ['migrationControllers', 'ui.bootstrap', 'ngSanitize'])
   , migrationControllers = angular.module('migrationControllers', []);
 
-migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log', 
+migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
   function($scope, $http, $log) {
     $scope.loading = false;
     $scope.mdrlAPIKey = '';
     $scope.mdrlTpl = '';
     $scope.spAPIKey = '';
-    $scope.useHerokuSPAPIKey = false;
     $scope.useSandboxDomain = true;
+    $scope.sparkPostEU = false;
     $scope.sandboxDomain = '';
 
     $http.get('/api/sandboxDomain').then(function(result) {
@@ -32,9 +32,9 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
         data: {
           mandrillAPIKey: $scope.mdrlAPIKey,
           mandrillTemplateName: $scope.mdrlTpl,
-          useHerokuSPAPIKey: $scope.useHerokuSPAPIKey,
           sparkPostAPIKey: $scope.spAPIKey,
-          useSandboxDomain: $scope.useSandboxDomain
+          useSandboxDomain: $scope.useSandboxDomain,
+          sparkPostEU: $scope.sparkPostEU
         }
       }).then(function(result) {
         if (result.errors) {
@@ -78,4 +78,3 @@ migrationControllers.controller('MigratorControl', ['$scope', '$http', '$log',
       return msg.replace(/\n/g, '<br>');
     }
   }]);
-

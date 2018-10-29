@@ -28,7 +28,7 @@
   <body ng-controller="MigratorControl" ng-class="loading ? 'loading' : ''">
     <div class="titlebar">
       <a href="https://www.sparkpost.com">
-        <img class="navbar-logo" src="https://developers.sparkpost.com/images/logo-sparkpost-white.png" alt="SparkPost" width="150">
+        <img class="navbar-logo" src="logo-white.png" alt="SparkPost" width="150">
       </a>
     </div>
     <div class="container-fluid">
@@ -42,10 +42,7 @@
                 <dt>Mandrill template name</dt>
                 <dd>Not the slug, the name :)</dd>
                 <dt>SparkPost API Key</dt>
-                <dd>Requires <code>Templates Read/Write</code> privileges<br>
-                  <em>Note: If you're running the SparkPost Heroku addon, we have your API key to hand already.</em>
-                </dd>
-                </dt>
+                <dd>Requires <code>Templates Read/Write</code> privileges<br></dd>
               </dl>
           </div>
         </div>
@@ -69,22 +66,21 @@
               </div>
               <div class="form-group">
                 <div class="checkbox">
-                  <label for="useHerokuSPAPIKey">
-                    <input type="checkbox" ng-model="useHerokuSPAPIKey" name="useHerokuSPAPIKey" id="useHerokuSPAPIKey"> Use your Heroku SparkPost addon key
+                  <label for="useSandboxDomain">
+                    <input type="checkbox" ng-model="useSandboxDomain" name="useSandboxDomain" id="useSandboxDomain"> Use sandbox domain <code>{{sandboxDomain}}</code> as the from address
                   </label>
                 </div>
                 <div class="checkbox">
-                  <label for="useSandboxDomain">
-                    <input type="checkbox" ng-model="useSandboxDomain" name="useSandboxDomain" id="useSandboxDomain"> Use sandbox domain <code>{{sandboxDomain}}</code> as the from address
+                  <label for="sparkPostEU">
+                    <input type="checkbox" ng-model="sparkPostEU" name="sparkPostEU" id="sparkPostEU">SparkPost EU
                   </label>
                 </div>
               </div>
               <button ng-disabled="loading || migrateFrm.$invalid" type="submit" class="btn btn-success btn-lg">Begin migration</button>
             </form>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
   </body>
 </html>
-

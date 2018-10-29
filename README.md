@@ -1,13 +1,13 @@
 [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
 
 This is a Mandrill to SparkPost email template migration tool.
-It supports translation of Mandrill's Handlebars syntax into equivalent SparkPost syntax.
+It enables translation of Mandrill's Handlebars syntax into equivalent [SparkPost Template Language](https://developers.sparkpost.com/api/template-language/) syntax.
 
-The tool presents a simple web UI for migrating templates directly from your Mandrill account to SparkPost as well as translating Mandrill template text directly into its SparkPost equivalent.
+It can migrate templates directly from your Mandrill account to SparkPost using the simple UI. It can also translate Mandrill template content directly into its SparkPost equivalent.
 
-If you want to automate your migration, the tool also has an API.
+If you want to automate your migration, the tool also has [an API](#the-api).
 
-See below for details on [deployment on Heroku](#heroku-deployment), [manual deployment](#manual-deployment) and [API use](#the-api).
+See below for details on [deployment](#deployment), [Heroku deployment](#heroku-deployment).
 
 ## Supported Features
 
@@ -23,55 +23,42 @@ See below for details on [deployment on Heroku](#heroku-deployment), [manual dep
 - *Inline helpers:* `url`, `data`, `striptags`
 - *Block helpers:* `unless`, `with`
 
-## Heroku Deployment
+## Deployment
 
-You can deploy it directly to Heroku: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-## Manual Deployment
-
-If you prefer you can deploy it into your own environment using the instructions below.
+Deploy it locally or on another environment using the instructions below.
 
 ### Prerequisites
 
- - node 0.12+
- - npm 2.11.3+
+ - node 8
+ - npm 6
 
 ```bash
 git clone --recursive https://github.com/SparkPost/mandrill-sparkpost-templates.git
 cd mandrill-sparkpost-templates
 npm install
-npm run start
+npm start
 ```
 
-You now have a server running on port 3000.
+You now have a server running on port `3000`.
+
+## Heroku Deployment
+
+You can also deploy it directly to Heroku: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Usage
 
 ### The UI
 
-Once deployed, you can migrate templates between services or translate template text directly
-through the web UI.
+Once deployed, you can migrate templates between services or translate template content directly
+through the UI hosted on port `3000`.
 
 ### The API
 
-If you prefer direct API access or you want to automate your template migration, here's how the API endpoints work.
+If you prefer direct API access to automate your template migration, here's how the API endpoints work:
 
-### API Errors
+#### /api/translate: Template Translation
 
-On error, the API endpoints will return a non-200 status code and a JSON error object containing a list of errors:
-
-```json
-{
-  "errors": [
-    {"message": "Description of a thing that did not work."},
-    {"message": "..."}
-  ]
-}
-```
-
-### /api/translate: Template Translation
-
-Accept a Mandrill template and convert it SparkPost format.
+Accepts a Mandrill template and converts it to SparkPost format.
 
 Request:
 
@@ -95,11 +82,9 @@ Content-Type: application/json
 }
 ```
 
-### /api/migrate: Migration From Mandrill To SparkPost
+#### /api/migrate: Migration From Mandrill To SparkPost
 
-Extract a template from Mandrill, translate it and import it into SparkPost.
-
-Note: your SparkPost API key must include Templates Read/Write privileges for use with the `migrate` endpoint and the migration UI.
+Extracts a template from Mandrill, translates it and imports it into SparkPost. Your SparkPost API key must include `Templates Read/Write` permission in order to add templates to your account. Manage your API keys from the [API Keys page](https://app.sparkpost.com/account/api-keys)([EU](https://app.eu.sparkpost.com/account/api-keys)).
 
 Request:
 
@@ -125,27 +110,23 @@ Content-Type: application/json
 }
 ```
 
+#### API Errors
+
+On error the API endpoints will return a non-200 status code and a JSON error object containing a list of errors:
+
+```json
+{
+  "errors": [
+    {"message": "Description of a thing that did not work."},
+    {"message": "..."}
+  ]
+}
+```
+
 ### Contributing
 
-We *welcome* your contributions.  Check out our [contributor notes](CONTRIBUTING.md) for details on how to help out.
+We *welcome* your contributions. Check out our [contributor notes](CONTRIBUTING.md) for details on how to help out.
 
 ### ChangeLog
 
 [See ChangeLog here](CHANGELOG.md)
-
-### Updating Handlebars
-
-If you make a change to the Handlebars subrepo, you must rebuild it:
-
-```bash
-npm run buildhb
-npm run disthb
-```
-
-Remember to commit the updated Handlebars build in vendor/handlebars.
-
-### Running Tests
-
-```bash
-npm run test
-```
