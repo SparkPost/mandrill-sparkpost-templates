@@ -1,5 +1,3 @@
-[![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
-
 This is a Mandrill to SparkPost email template migration tool.
 It enables translation of Mandrill's Handlebars syntax into equivalent [SparkPost Template Language](https://developers.sparkpost.com/api/template-language/) syntax.
 
