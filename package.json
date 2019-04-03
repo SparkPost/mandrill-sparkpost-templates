@@ -22,6 +22,7 @@
     "email-addresses": "^2.0.2",
     "express": "^4.13.4",
     "handlebars": "file:vendor/handlebars",
+    "juice": "^1.10.0",
     "mandrill-api": "^1.0.45",
     "morgan": "^1.7.0",
     "q": "^1.4.1",
